@@ -11,7 +11,7 @@ namespace NLayer.Core.Repositories
         // Async birşekilde de tanımlamadık çünkü veri tabanında sorgu yapmadık IQuerayble da.
         Task<T> GetByIdAsync(int id);
         
-        IQueryable<T> GetAll(Expression<Func<T,bool>> expression);
+        IQueryable<T> GetAll();
 
         // productRepository.where(x => x.id>5).OrderBy.ToListAsync()
         // ToListAsync() diyene kadar veritabanında sorgu yapmayacak.

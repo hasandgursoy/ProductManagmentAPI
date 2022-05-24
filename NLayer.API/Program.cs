@@ -5,6 +5,7 @@ using NLayer.Core.UnitOfWorks;
 using NLayer.Repository;
 using NLayer.Repository.Repositories;
 using NLayer.Repository.UnitOfWorks;
+using NLayer.Service.Mapping;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,7 +19,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
-//builder.Services.AddScoped(typeof(IService<>), typeof(GenericRepository<>));
+builder.Services.AddScoped(typeof(IService<>), typeof(GenericRepository<>));
+// MapProfile'a bütün verileri gömmek zorunda deðiliz birden fazla Profile'ý miras alan sýnýfýmýz varsa 
+// Assembly.GetAssembly diyerek Profile'ý miras alan sýnýflarýda yazabiliriz.
+builder.Services.AddAutoMapper(typeof(MapProfile));
+
 
 builder.Services.AddDbContext<AppDbContext>(x =>
 {
