@@ -6,6 +6,7 @@ using NLayer.Repository;
 using NLayer.Repository.Repositories;
 using NLayer.Repository.UnitOfWorks;
 using NLayer.Service.Mapping;
+using NLayer.Service.Services;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,19 +20,15 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
-builder.Services.AddScoped(typeof(IService<>), typeof(GenericRepository<>));
+builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
 // MapProfile'a bütün verileri gömmek zorunda deðiliz birden fazla Profile'ý miras alan sýnýfýmýz varsa 
 // Assembly.GetAssembly diyerek Profile'ý miras alan sýnýflarýda yazabiliriz.
 builder.Services.AddAutoMapper(typeof(MapProfile));
 
-
+var connectionString = builder.Configuration.GetConnectionString("PostgreSQL");
 builder.Services.AddDbContext<AppDbContext>(x =>
 {
-    x.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection"),options =>
-    {   
-        // Tip güvenli olarak yazmak için direkt olarak NLayer.Repository yazmak yerine böyle bir yol izledik ayný þey aslýnda.
-        options.MigrationsAssembly(Assembly.GetAssembly(typeof(AppDbContext)).GetName().Name);
-    });
+    x.UseNpgsql(connectionString);
 });
 
 var app = builder.Build();

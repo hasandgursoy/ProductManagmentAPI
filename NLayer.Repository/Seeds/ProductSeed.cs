@@ -21,7 +21,7 @@ namespace NLayer.Repository.Seeds
                 CategoryId = 1,
                 Price = 100,
                 Stock = 20,
-                CreatedDate = DateTime.Now,
+                CreatedDate = DateTime.UtcNow,
                 
             },
             new Product
@@ -31,7 +31,7 @@ namespace NLayer.Repository.Seeds
                 CategoryId = 1,
                 Price = 600,
                 Stock = 20,
-                CreatedDate = DateTime.Now,
+                CreatedDate = DateTime.UtcNow,
 
             },
             new Product
@@ -41,7 +41,7 @@ namespace NLayer.Repository.Seeds
                 CategoryId = 1,
                 Price = 300,
                 Stock = 20,
-                CreatedDate = DateTime.Now,
+                CreatedDate = DateTime.UtcNow,
 
             },
             new Product
@@ -51,7 +51,7 @@ namespace NLayer.Repository.Seeds
                 CategoryId = 2,
                 Price = 700,
                 Stock = 20,
-                CreatedDate = DateTime.Now,
+                CreatedDate = DateTime.UtcNow,
 
             },
             new Product
@@ -61,7 +61,7 @@ namespace NLayer.Repository.Seeds
                 CategoryId = 2,
                 Price = 1100,
                 Stock = 30,
-                CreatedDate = DateTime.Now,
+                CreatedDate = DateTime.UtcNow,
 
             });
         }
