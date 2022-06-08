@@ -25,6 +25,12 @@ builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
 // Assembly.GetAssembly diyerek Profile'ý miras alan sýnýflarýda yazabiliriz.
 builder.Services.AddAutoMapper(typeof(MapProfile));
 
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductService  , ProductService>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+
+
 var connectionString = builder.Configuration.GetConnectionString("PostgreSQL");
 builder.Services.AddDbContext<AppDbContext>(x =>
 {

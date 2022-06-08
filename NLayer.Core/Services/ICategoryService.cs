@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace NLayer.Core.Services
 {
-    public interface IProductService : IService<Product>
+    public interface ICategoryService : IService<Category>
     {
 
-        Task<CustomResponseDto<List<ProductWithCategoryDto>>> GetProductsCategory();
+        public Task<CustomResponseDto<CategoryWtihProductsDto>> GetSingleCategoryByIdWithProducts(int categoryId);
 
     }
 }
