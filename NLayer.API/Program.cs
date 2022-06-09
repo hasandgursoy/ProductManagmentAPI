@@ -37,7 +37,7 @@ builder.Services.AddScoped(typeof(NotFoundFilter<>));
 // MapProfile'a bütün verileri gömmek zorunda deðiliz birden fazla Profile'ý miras alan sýnýfýmýz varsa 
 // Assembly.GetAssembly diyerek Profile'ý miras alan sýnýflarýda yazabiliriz.
 builder.Services.AddAutoMapper(typeof(MapProfile));
-
+ 
 
 
 // Autofac'in implementasyonu.
