@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using NLayer.Core.DTOs;
 using NLayer.Core.Entities;
 using NLayer.Core.Services;
+using NLayer.Service.Filters;
 
 namespace NLayer.API.Controllers
 {
@@ -42,6 +43,8 @@ namespace NLayer.API.Controllers
 
         }
 
+
+        [ServiceFilter(typeof(NotFoundFilter<Product>))]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {

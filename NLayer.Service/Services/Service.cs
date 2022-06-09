@@ -68,7 +68,6 @@ namespace NLayer.Service.Services
         {
             _repository.Remove(entity);
             await _unitOfWork.CommitAsync();
-
         }
 
         public async Task RemoveRangeAsync(IEnumerable<T> entities)
