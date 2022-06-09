@@ -9,6 +9,7 @@ using NLayer.Repository.Repositories;
 using NLayer.Repository.UnitOfWorks;
 using NLayer.Service.Filters;
 using NLayer.Service.Mapping;
+using NLayer.Service.Middlewares;
 using NLayer.Service.Services;
 using NLayer.Service.Validations;
 using System.Reflection;
@@ -56,6 +57,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCustomExcepiton();
 
 app.UseAuthorization();
 
